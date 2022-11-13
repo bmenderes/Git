@@ -77,7 +77,7 @@ getComments(2)
     .then((data) => console.log(data))
     .catch((e) => console.log(e)); */
 
-const getUsers = () => {
+/* const getUsers = () => {
     return new Promise(async (resolve, reject) => {
         const { data: users } = await axios("https://jsonplaceholder.typicode.com/users");
         resolve(users);
@@ -86,4 +86,65 @@ const getUsers = () => {
 
 getUsers()
     .then((data) => console.log(data))
-    .catch((e) => console.log(e));
+    .catch((e) => console.log(e)); */
+
+const users = ["Evrim", "Baris", "Ela", "Arel"];
+const objUsers = [{
+    name: "Baris",
+    age: 42
+},
+{
+    name: "Evrim",
+    age: 43
+},
+{
+    name: "Ela",
+    age: 12
+},
+{
+    name: "Arel",
+    age: 4
+}
+]
+//push
+users.push("Leo")
+console.log(users)
+
+//clone users.. for array let arr1 = [...users] for object let obj1 = {...users}
+let arr1 = [...users]
+arr1.push("lea")
+console.log(arr1)
+
+//map array
+users.map((item) => {
+    console.log("Array'den gelenler | ", item)
+});
+
+// map object
+objUsers.map((item) => {
+    console.log("Objeden glenler | ", item.name)
+})
+
+//find
+/* const result = objUsers.find((item) => item.name === "Baris");
+console.log(result);
+ */
+const resultAge = objUsers.find((item) => item.age > 14);
+console.log(resultAge)
+
+//filter
+const filtered = objUsers.filter((item) => item.age < 14)
+console.log(filtered)
+
+//some (if there is one condition is mathcing with req. : turn true)
+const some = objUsers.some((item) => item.age === 4)
+console.log(some)
+
+//every (if all conditions are ture :  return true)
+const every = objUsers.every((item) => item.age > 2)
+console.log(every)
+
+//includes (if array includes item return true)
+const meyveler = ["elma", "armut", "muz"]
+const isIncluded = meyveler.includes("elma")
+console.log(isIncluded)
