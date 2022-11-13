@@ -16,6 +16,7 @@ sayHi(() => {
 }); */
 
 import fetch from 'node-fetch';
+import axios from 'axios';
 
 /* fetch("https://jsonplaceholder.typicode.com/users")
     .then((data) => data.json())
@@ -27,6 +28,7 @@ import fetch from 'node-fetch';
     });
  */
 
+/* // Fetech Ornek
 async function getData() {
     const data = await (await fetch("https://jsonplaceholder.typicode.com/users"))
         .json();
@@ -40,4 +42,48 @@ async function getData() {
     console.log("Post2 | ", post2)
 }
 
+getData() */
+
+/* // Axios Ornek
+
+async function getData() {
+    const { data: users } = await axios("https://jsonplaceholder.typicode.com/users");
+
+    const { data: post1 } = await axios("https://jsonplaceholder.typicode.com/posts/1");
+
+    const { data: post2 } = await axios("https://jsonplaceholder.typicode.com/posts/2");
+
+    console.log("Users | ", users)
+    console.log("Post1 | ", post1)
+    console.log("Post2 | ", post2)
+}
+
 getData()
+ */
+
+//Promises
+
+/* const getComments = (number) => {
+    return new Promise((resolve, reject) => {
+        if (number === 1) {
+            resolve("Comments");
+        }
+        reject("Bir problem sorunu olsutu!!!")
+
+    });
+}
+
+getComments(2)
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e)); */
+
+const getUsers = () => {
+    return new Promise(async (resolve, reject) => {
+        const { data: users } = await axios("https://jsonplaceholder.typicode.com/users");
+        resolve(users);
+    });
+}
+
+getUsers()
+    .then((data) => console.log(data))
+    .catch((e) => console.log(e));
